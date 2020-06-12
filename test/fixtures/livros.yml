@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  autor: MyString
+  editora: MyString
+  edicao: 1
+  descricao: MyText
+  num_exemplares: 1
+  tempo_emprestimo: 1
+
+two:
+  nome: MyString
+  autor: MyString
+  editora: MyString
+  edicao: 1
+  descricao: MyText
+  num_exemplares: 1
+  tempo_emprestimo: 1

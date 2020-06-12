@@ -1,0 +1,47 @@
+<%= form_with(model: periodico, local: true) do |form| %>
+  <% if periodico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(periodico.errors.count, "error") %> prohibited this periodico from being saved:</h2>
+
+      <ul>
+        <% periodico.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edicao %>
+    <%= form.number_field :edicao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :periocidade %>
+    <%= form.number_field :periocidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_exemplares %>
+    <%= form.number_field :num_exemplares %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tempo_emprestimo %>
+    <%= form.number_field :tempo_emprestimo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

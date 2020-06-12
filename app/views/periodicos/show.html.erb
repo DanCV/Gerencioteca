@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @periodico.nome %>
+</p>
+
+<p>
+  <strong>Edicao:</strong>
+  <%= @periodico.edicao %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @periodico.descricao %>
+</p>
+
+<p>
+  <strong>Periocidade:</strong>
+  <%= @periodico.periocidade %>
+</p>
+
+<p>
+  <strong>Num exemplares:</strong>
+  <%= @periodico.num_exemplares %>
+</p>
+
+<p>
+  <strong>Tempo emprestimo:</strong>
+  <%= @periodico.tempo_emprestimo %>
+</p>
+
+<%= link_to 'Edit', edit_periodico_path(@periodico) %> |
+<%= link_to 'Back', periodicos_path %>
