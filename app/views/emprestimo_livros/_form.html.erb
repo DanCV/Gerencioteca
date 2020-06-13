@@ -1,0 +1,37 @@
+<%= form_with(model: emprestimo_livro, local: true) do |form| %>
+  <% if emprestimo_livro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(emprestimo_livro.errors.count, "error") %> prohibited this emprestimo_livro from being saved:</h2>
+
+      <ul>
+        <% emprestimo_livro.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :usuario_id %>
+    <%= collection_select(:emprestimo_livro,:usuario_id,Usuario.all,:id,:cod_instituicional) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :livro_id %>
+    <%= collection_select(:emprestimo_livro,:livro_id,Livro.all,:id,:nome) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dia %>
+    <%= form.date_select :dia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :devolucao %>
+    <%= form.date_select :devolucao %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

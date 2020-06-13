@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :emprestimo_livros
   resources :usuarios
   resources :periodicos
   resources :livros

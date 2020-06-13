@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_233455) do
+ActiveRecord::Schema.define(version: 2020_06_13_161823) do
+
+  create_table "emprestimo_livros", force: :cascade do |t|
+    t.integer "usuario_id", null: false
+    t.integer "livro_id", null: false
+    t.date "dia"
+    t.date "devolucao"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["livro_id"], name: "index_emprestimo_livros_on_livro_id"
+    t.index ["usuario_id"], name: "index_emprestimo_livros_on_usuario_id"
+  end
 
   create_table "livros", force: :cascade do |t|
     t.string "nome"
@@ -42,4 +53,6 @@ ActiveRecord::Schema.define(version: 2020_06_12_233455) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "emprestimo_livros", "livros"
+  add_foreign_key "emprestimo_livros", "usuarios"
 end
