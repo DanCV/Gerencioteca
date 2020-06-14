@@ -28,6 +28,8 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_emprestimo_livro_path(emprestimo_livro), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.devolução', :default => t("helpers.links.devolução")),
+                      edit_emprestimo_livro_path(emprestimo_livro), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       emprestimo_livro_path(emprestimo_livro),
                       :method => :delete,
@@ -39,6 +41,7 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.Novo', :default => t("helpers.links.new")),
             new_emprestimo_livro_path,
             :class => 'btn btn-primary' %>
+
