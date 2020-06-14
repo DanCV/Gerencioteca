@@ -1,43 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<%= search_form_for @q do |f| %>
-  <%= f.label :nome_cont %>
-  <%= f.search_field :nome_cont %>
-  <%= f.submit %>
-<% end %>
-
-<h1>Periodicos</h1>
-
-<table>
+<%- model_class = Periodico -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Edicao</th>
-      <th>Descricao</th>
-      <th>Periocidade</th>
-      <th>Num exemplares</th>
-      <th>Tempo emprestimo</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:edicao) %></th>
+      <th><%= model_class.human_attribute_name(:descricao) %></th>
+      <th><%= model_class.human_attribute_name(:periocidade) %></th>
+      <th><%= model_class.human_attribute_name(:num_exemplares) %></th>
+      <th><%= model_class.human_attribute_name(:tempo_emprestimo) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @periodicos.each do |periodico| %>
       <tr>
+        <td><%= link_to periodico.id, periodico_path(periodico) %></td>
         <td><%= periodico.nome %></td>
         <td><%= periodico.edicao %></td>
         <td><%= periodico.descricao %></td>
         <td><%= periodico.periocidade %></td>
         <td><%= periodico.num_exemplares %></td>
         <td><%= periodico.tempo_emprestimo %></td>
-        <td><%= link_to 'Show', periodico %></td>
-        <td><%= link_to 'Edit', edit_periodico_path(periodico) %></td>
-        <td><%= link_to 'Destroy', periodico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l periodico.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_periodico_path(periodico), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      periodico_path(periodico),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Periodico', new_periodico_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_periodico_path,
+            :class => 'btn btn-primary' %>

@@ -14,8 +14,9 @@ class UsuariosTest < ApplicationSystemTestCase
     visit usuarios_url
     click_on "New Usuario"
 
-    fill_in "Cod instituicional", with: @usuario.cod_instituicional
+    fill_in "Cod institucional", with: @usuario.cod_institucional
     fill_in "Nome", with: @usuario.nome
+    fill_in "Profissao", with: @usuario.profissao
     click_on "Create Usuario"
 
     assert_text "Usuario was successfully created"
@@ -26,8 +27,9 @@ class UsuariosTest < ApplicationSystemTestCase
     visit usuarios_url
     click_on "Edit", match: :first
 
-    fill_in "Cod instituicional", with: @usuario.cod_instituicional
+    fill_in "Cod institucional", with: @usuario.cod_institucional
     fill_in "Nome", with: @usuario.nome
+    fill_in "Profissao", with: @usuario.profissao
     click_on "Update Usuario"
 
     assert_text "Usuario was successfully updated"

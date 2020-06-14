@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_161823) do
+ActiveRecord::Schema.define(version: 2020_06_13_202709) do
 
   create_table "emprestimo_livros", force: :cascade do |t|
     t.integer "usuario_id", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_161823) do
     t.date "devolucao"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
     t.index ["livro_id"], name: "index_emprestimo_livros_on_livro_id"
     t.index ["usuario_id"], name: "index_emprestimo_livros_on_usuario_id"
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_161823) do
     t.integer "tempo_emprestimo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
   end
 
   create_table "periodicos", force: :cascade do |t|
@@ -48,7 +50,8 @@ ActiveRecord::Schema.define(version: 2020_06_13_161823) do
 
   create_table "usuarios", force: :cascade do |t|
     t.string "nome"
-    t.integer "cod_instituicional"
+    t.integer "cod_institucional"
+    t.string "profissao"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

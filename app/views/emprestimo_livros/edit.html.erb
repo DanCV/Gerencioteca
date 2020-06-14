@@ -1,6 +1,5 @@
-<h1>Editing Emprestimo Livro</h1>
-
-<%= render 'form', emprestimo_livro: @emprestimo_livro %>
-
-<%= link_to 'Show', @emprestimo_livro %> |
-<%= link_to 'Back', emprestimo_livros_path %>
+<%- model_class = EmprestimoLivro -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

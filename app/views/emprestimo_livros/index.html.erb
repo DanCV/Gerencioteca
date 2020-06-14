@@ -1,46 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-<%= search_form_for @q do |f| %>
-  <%= f.label :usuario_id_eq %>
-  <%= f.search_field :usuario_id_eq %>
-  <%= f.submit %>
-<% end %>
-
-<h1>Emprestimo Livros</h1>
-
-<table>
+<%- model_class = EmprestimoLivro -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Usuario</th>
-      <th>Nome do Usuario</th>
-      <th>Código Institucional</th>
-      <th>Livro</th>
-      <th>Nome do Livro</th>
-      <th>Dia</th>
-      <th>Devolucao</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:usuario_id) %></th>
+      <th><%= model_class.human_attribute_name(:livro_id) %></th>
+      <th><%= model_class.human_attribute_name(:dia) %></th>
+      <th><%= model_class.human_attribute_name(:devolucao) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @emprestimo_livros.each do |emprestimo_livro| %>
       <tr>
+        <td><%= link_to emprestimo_livro.id, emprestimo_livro_path(emprestimo_livro) %></td>
         <td><%= emprestimo_livro.usuario_id %></td>
-        <td><%= emprestimo_livro.usuario.nome %></td>
-        <td><%= emprestimo_livro.usuario.cod_instituicional %></td>
         <td><%= emprestimo_livro.livro_id %></td>
-        <td><%= emprestimo_livro.livro.nome %></td>
         <td><%= emprestimo_livro.dia.strftime("%d/%m/%Y") %></td>
-        <td><%= emprestimo_livro.devolucao.strftime("%d/%m/%Y") %></td>
-        <td><%= link_to 'Show', emprestimo_livro %></td>
-        <td><%= link_to 'Edit', edit_emprestimo_livro_path(emprestimo_livro) %></td>
-        <td><%= link_to 'Destroy', emprestimo_livro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= emprestimo_livro.devolucao.strftime("%d/%m/%Y")  %></td>
+        <td><%= emprestimo_livro.status %></td>
+        <td><%=l emprestimo_livro.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_emprestimo_livro_path(emprestimo_livro), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      emprestimo_livro_path(emprestimo_livro),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Novo Emprestimo Livro', new_emprestimo_livro_path %>
-<%= link_to 'Consulta Usuarios', usuarios_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_emprestimo_livro_path,
+            :class => 'btn btn-primary' %>

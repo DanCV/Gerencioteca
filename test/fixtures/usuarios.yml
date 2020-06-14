@@ -2,8 +2,10 @@
 
 one:
   nome: MyString
-  cod_instituicional: 1
+  cod_institucional: 1
+  profissao: MyString
 
 two:
   nome: MyString
-  cod_instituicional: 1
+  cod_institucional: 1
+  profissao: MyString

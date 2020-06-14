@@ -4,7 +4,7 @@ class EmprestimoLivrosController < ApplicationController
   # GET /emprestimo_livros
   # GET /emprestimo_livros.json
   def index
-    @q = EmprestimoLivro.select('emprestimo_livros.*,usuarios.nome as usuarios, livros.nome as livros, usuarios.cod_instituicional as usuarios').joins(:usuario,:livro).ransack(params[:q])
+    @q = EmprestimoLivro.select('emprestimo_livros.*,usuarios.nome as usuarios, livros.nome as livros, usuarios.cod_institucional as usuarios').joins(:usuario,:livro).ransack(params[:q])
     @emprestimo_livros = @q.result(distinct: true)
   end
 
@@ -26,7 +26,6 @@ class EmprestimoLivrosController < ApplicationController
   # POST /emprestimo_livros.json
   def create
     @emprestimo_livro = EmprestimoLivro.new(emprestimo_livro_params)
-
     respond_to do |format|
       if @emprestimo_livro.save
         format.html { redirect_to @emprestimo_livro, notice: 'Emprestimo livro was successfully created.' }
@@ -70,6 +69,6 @@ class EmprestimoLivrosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def emprestimo_livro_params
-      params.require(:emprestimo_livro).permit(:usuario_id, :livro_id, :dia, :devolucao)
+      params.require(:emprestimo_livro).permit(:usuario_id, :livro_id, :dia, :devolucao,:status)
     end
 end

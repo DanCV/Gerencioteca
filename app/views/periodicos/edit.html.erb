@@ -1,6 +1,5 @@
-<h1>Editing Periodico</h1>
-
-<%= render 'form', periodico: @periodico %>
-
-<%= link_to 'Show', @periodico %> |
-<%= link_to 'Back', periodicos_path %>
+<%- model_class = Periodico -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
